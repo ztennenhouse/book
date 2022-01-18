@@ -1,0 +1,29 @@
+.addBookButton {
+    background-color: lightblue;
+    color: white;
+    height: 5vh;
+    width: 5vh;
+    font-size: 3vh;
+    border-radius: 75%;
+    border-style: solid;
+}
+.grid {
+    display: flex;
+    gap: 5vh;
+    align-items: center;
+}
+.book {
+    display: flex;
+    flex-direction: column;
+    height: 20vh;
+    width: 20vh;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-weight: bold;
+}

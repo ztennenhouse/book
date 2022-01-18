@@ -1,16 +1,17 @@
-.addBookButton {
-    background-color: lightblue;
-    color: white;
-    height: 5vh;
-    width: 5vh;
-    font-size: 3vh;
-    border-radius: 75%;
-    border-style: solid;
+
+.header {
+    display: flex;
+    flex-direction: column;
+    height: 30vh;
+    background-color: gray;
 }
+
 .grid {
     display: flex;
     gap: 5vh;
     align-items: center;
+    padding-top: 5vh;
+    flex-flow: wrap;
 }
 .book {
     display: flex;
@@ -25,5 +26,41 @@
 }
 
 .title {
+    display: flex;
+    align-items: center;
     font-weight: bold;
+}
+.top {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+}
+
+.addBookButton {
+    background-color: lightblue;
+    color: white;
+    height: 5vh;
+    width: 5vh;
+    font-size: 3vh;
+    border-radius: 75%;
+    border-style: solid;
+}
+.pageTitle {
+    display: flex;
+    justify-content: center;
+    font-size: 10vh;
+}
+form {
+    display: flex;
+    background-color: lightcyan;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+}
+.formRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-width: 3px;
+    padding-top: 3px;
 }

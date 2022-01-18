@@ -4,7 +4,7 @@ var formSubmit = document.querySelector("#submitButton")
 var grid = document.querySelector(".grid");
 
 
-
+let formOpen = false;
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -63,8 +63,14 @@ function Book(title, author, pages, read) {
     }
 
 
-    function openForm() {
+    function toggleForm() {
+        if (formOpen === true) {
         form.style.display = 'block';
+        formOpen = false;
+        } else if (formOpen === false) {
+            form.style.display = 'none';
+            formOpen=true;
+        }
     }
 
 function clearSubmission() {
@@ -76,7 +82,7 @@ function clearSubmission() {
 }
 
 
-button.addEventListener('click', openForm);
+button.addEventListener('click', toggleForm);
 button.addEventListener('mouseover', function() {
     button.style.backgroundColor = "lightgrey";
 });

@@ -1,11 +1,12 @@
 var button = document.querySelector(".addBookButton");
 var form = document.querySelector("#addBookForm");
-var formSubmit = document.querySelector("#submitButton")
+var formSubmit = document.querySelector("#submitButton");
 var grid = document.querySelector(".grid");
-
+var readButton = document.querySelector(".readButton");
 
 let formOpen = false;
 let myLibrary = [];
+let isRead = "Not read";
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -18,10 +19,14 @@ function Book(title, author, pages, read) {
         var inputTitle = document.getElementById('bookTitle').value;
         var inputAuthor = document.getElementById('author').value;
         var inputPages = document.getElementById('pages').value;
-        var inputRead = document.getElementById('read').value;
+        var inputRead = document.getElementById('read');
+        if (inputRead.checked === true) {
+            isRead = "Read";
+        } else {
+            isRead = "Not Read";
+        }
 
-
-        myLibrary.push(new Book(inputTitle, inputAuthor, inputPages, inputRead));
+        myLibrary.push(new Book(inputTitle, inputAuthor, inputPages, isRead));
         displayBooks();
         clearSubmission();
     }
@@ -29,7 +34,7 @@ function Book(title, author, pages, read) {
     function displayBooks() {
         const books = document.querySelectorAll('.book');
         books.forEach(book => grid.removeChild(book));
-        for (let i=0; i < myLibrary.length; i++) {
+        for (var i=0; i < myLibrary.length; i++) {
             createBook(myLibrary[i]);
         }
         }
@@ -38,7 +43,7 @@ function Book(title, author, pages, read) {
          titleDiv = document.createElement('div');
          authorDiv = document.createElement('div');
          pagesDiv = document.createElement('div');
-         readDiv = document.createElement('div');
+         readDiv = document.createElement('button');
 
         bookDiv.classList.add('book');
         bookDiv.setAttribute('id', myLibrary.indexOf(num));
@@ -50,7 +55,7 @@ function Book(title, author, pages, read) {
         bookDiv.appendChild(titleDiv);
 
         // add author div
-        authorDiv.textContent = num.author;
+        authorDiv.textContent = "By " + num.author;
         authorDiv.classList.add('author');
         bookDiv.appendChild(authorDiv);
 
@@ -59,8 +64,50 @@ function Book(title, author, pages, read) {
         pagesDiv.classList.add('pages');
         bookDiv.appendChild(pagesDiv);
 
+        readDiv.textContent = num.read;
+        readDiv.classList.add('readButton');
+        readDiv.setAttribute('id', "book" + myLibrary.indexOf(num));
+        bookDiv.appendChild(readDiv); 
 
+        zach = myLibrary.indexOf(num);
+        testing(zach);
     }
+    function testing(num) {
+       var test = document.querySelectorAll('.readButton');
+        // test.forEach(function(elem) {
+        //     elem.addEventListener('click', function() {
+        //         testRead(this);
+        //     });
+        // });
+        for (let j = num; j < test.length; j++) {
+            // (function () {
+            var self = test[j];
+            self.addEventListener('click', function() {
+                testRead(self);
+            }, false);
+        // }());
+    }
+}
+    
+    function testRead(number) {
+        numberID = number.getAttribute('id');
+        testDiv = document.getElementById(numberID);
+            if (testDiv.textContent === "Read") {
+                testDiv.textContent = "Not Read";
+            } else {
+                testDiv.textContent = "Read";
+            }
+        }
+    
+
+        // function toggleRead(i) {
+        //     testDiv = document.getElementById("book" + i);
+        //     if (testDiv.textContent === "Read") {
+        //         testDiv.textContent = "Not Read";
+        //     } else if(testDiv.textContent === "Not Read") {
+        //         testDiv.textContent = "Read";
+        //     }
+        // }
 
 
     function toggleForm() {
@@ -80,6 +127,8 @@ function clearSubmission() {
     document.getElementById('pages').value = "";
 
 }
+
+
 
 
 button.addEventListener('click', toggleForm);

@@ -1,8 +1,11 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 
 .header {
     display: flex;
     flex-direction: column;
-    height: 30vh;
+    height: 15vh;
     background-color: gray;
 }
 
@@ -10,7 +13,7 @@
     display: flex;
     gap: 5vh;
     align-items: center;
-    padding-top: 5vh;
+    padding-top: 35vh;
     flex-flow: wrap;
 }
 .book {
@@ -20,9 +23,10 @@
     width: 20vh;
     border-style: solid;
     border-color: black;
-    border-width: 1px;
+    border-width: 3px;
+    border-radius: 10%;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .title {
@@ -51,11 +55,7 @@
     font-size: 10vh;
 }
 form {
-    display: flex;
-    background-color: lightcyan;
-    align-items: center;
-    justify-content: center;
-    padding-top: 10px;
+    background-color: lightgrey;
 }
 .formRow {
     display: flex;
@@ -63,4 +63,5 @@ form {
     justify-content: center;
     border-width: 3px;
     padding-top: 3px;
+    gap: 5px
 }

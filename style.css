@@ -26,7 +26,7 @@ body {
     border-width: 3px;
     border-radius: 10%;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .title {
@@ -64,4 +64,13 @@ form {
     border-width: 3px;
     padding-top: 3px;
     gap: 5px
+}
+.deleteButton {
+    display: flex;
+    flex-direction: row;
+    margin-left: 75%;
+    margin-bottom: 25%;
+    border-radius: 25%;
+    border-style: solid;
+    background-color: lightcoral;
 }

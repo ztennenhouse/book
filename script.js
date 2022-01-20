@@ -39,6 +39,7 @@ function Book(title, author, pages, read) {
         }
         }
     function createBook(num) {
+         deleteDiv = document.createElement('button');
          bookDiv = document.createElement('div');
          titleDiv = document.createElement('div');
          authorDiv = document.createElement('div');
@@ -46,8 +47,13 @@ function Book(title, author, pages, read) {
          readDiv = document.createElement('button');
 
         bookDiv.classList.add('book');
-        bookDiv.setAttribute('id', myLibrary.indexOf(num));
+        bookDiv.setAttribute('id', "book" + myLibrary.indexOf(num));
         grid.appendChild(bookDiv);
+
+        deleteDiv.textContent = "X";
+        deleteDiv.classList.add('deleteButton');
+        deleteDiv.setAttribute('id', "delete" + myLibrary.indexOf(num));
+        bookDiv.appendChild(deleteDiv);
 
         // add title div
         titleDiv.textContent = num.title;
@@ -66,11 +72,22 @@ function Book(title, author, pages, read) {
 
         readDiv.textContent = num.read;
         readDiv.classList.add('readButton');
-        readDiv.setAttribute('id', "book" + myLibrary.indexOf(num));
+        readDiv.setAttribute('id', "read" + myLibrary.indexOf(num));
         bookDiv.appendChild(readDiv); 
 
-        zach = myLibrary.indexOf(num);
-        testing(zach);
+
+        readDivNum = myLibrary.indexOf(num);
+        testing(readDivNum);
+        removeDeleteButton(readDivNum);
+    }
+    function removeDeleteButton(num) {
+        var deleteButton = document.querySelectorAll('.deleteButton');
+        for (let i = num; i< deleteButton.length; i++) {
+            var self = deleteButton[i];
+            self.addEventListener('click', function() {
+                removeBook(self);
+            }, false);
+        }
     }
     function testing(num) {
        var test = document.querySelectorAll('.readButton');
@@ -98,6 +115,13 @@ function Book(title, author, pages, read) {
                 testDiv.textContent = "Read";
             }
         }
+    function removeBook(number) {
+        numberID = number.getAttribute('id');
+        tempDiv = document.getElementById(numberID);
+            tempDiv.parentElement.remove();
+            myLibrary.splice(numberID, 1);
+    }
+
     
 
         // function toggleRead(i) {
@@ -127,6 +151,8 @@ function clearSubmission() {
     document.getElementById('pages').value = "";
 
 }
+
+
 
 
 
